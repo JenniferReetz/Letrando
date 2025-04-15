@@ -30,7 +30,6 @@ public class AuthController {
     @Autowired
     private JwtUtil jwtUtil;
 
-    // Registro de usuário
     @PostMapping("/signup")
     public ResponseEntity<String> signup(@RequestBody Usuario usuario) {
         if (usuarioRepository.existsByUsername(usuario.getUsername())) {
@@ -42,7 +41,6 @@ public class AuthController {
         return ResponseEntity.ok("Usuário criado com sucesso");
     }
 
-    // Login de usuário (corrigido para POST e usando um DTO)
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody AuthRequest authRequest) {
         try {

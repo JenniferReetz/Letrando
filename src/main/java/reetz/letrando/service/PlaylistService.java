@@ -25,9 +25,9 @@ public class PlaylistService {
 
     public List<MusicDTO> getPlaylistMusics(Long playlistId) {
         Playlist playlist = playlistRepository.findById(playlistId).orElseThrow();
-        List<String> musicIds = playlist.getMusicIds(); // lista de IDs
+        List<String> musicIds = playlist.getMusicIds();
 
-        String accessToken = spotifyAuthService.getAccessToken(); // token do client_credentials
+        String accessToken = spotifyAuthService.getAccessToken();
 
         return musicIds.stream()
                 .map(id -> externalService.getMusicFromSpotify(id, accessToken))

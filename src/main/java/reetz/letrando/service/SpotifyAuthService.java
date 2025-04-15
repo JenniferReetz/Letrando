@@ -43,9 +43,9 @@ public class SpotifyAuthService {
 
         Map<String, Object> body = response.getBody();
         cachedToken = (String) body.get("access_token");
-        int expiresIn = (int) body.get("expires_in"); // geralmente 3600
+        int expiresIn = (int) body.get("expires_in");
 
-        expiresAt = Instant.now().plusSeconds(expiresIn - 60); // 1 min de folga
+        expiresAt = Instant.now().plusSeconds(expiresIn - 60);
 
         return cachedToken;
     }

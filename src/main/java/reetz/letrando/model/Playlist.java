@@ -22,8 +22,6 @@ public class Playlist {
     @Column(name = "spotify_music_id")
     private List<String> musicIds = new ArrayList<>();
 
-    // Construtores, getters e setters...
-
     public Playlist() {}
 
     public Playlist(Usuario usuario, String nome, List<String> musicIds) {

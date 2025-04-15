@@ -11,12 +11,11 @@ import java.util.Date;
 @Component
 public class JwtUtil {
 
-    private final Algorithm algorithm;  // Agora isso será injetado pelo construtor
-    private final long expirationTime = 1000 * 60 * 60; // 1 hora
+    private final Algorithm algorithm;
 
-    // A chave será injetada aqui usando @Value
+    private final long expirationTime = 1000 * 60 * 60;
     public JwtUtil(@Value("${jwt.secret}") String secretKey) {
-        this.algorithm = Algorithm.HMAC256(secretKey);  // Agora o algoritmo é inicializado no construtor
+        this.algorithm = Algorithm.HMAC256(secretKey);
     }
 
     public String gerarToken(UserDetails userDetails) {
