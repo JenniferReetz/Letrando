@@ -325,14 +325,14 @@ Usuário criado com sucesso
 <a name="insomnia-collection"></a>
 ## 🔗 Insomnia Collection
 <details>
-<summary> <strong>HAR</strong></summary> 
+<summary> <strong>Download</strong></summary> 
 Para testar os endpoints da API, importe o arquivo `.har` no Insomnia:
 
-📁 [Download da Collection](collection/Insomnia_2025-04-18.har)
+📁 [Download da Collection](collection/Insomnia_2025-04-18.yaml)
 
 **Como importar no Insomnia:**
 1. Abra o Insomnia
 2. Vá em `File` > `Import` > `From File`
-3. Selecione o arquivo `Insomnia_2025-04-18.har`
+3. Selecione o arquivo `Insomnia_2025-04-18.yaml`
 4. Pronto! Agora é só testar os endpoints da API
 </details>
