@@ -8,11 +8,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
-import org.springframework.web.util.UriUtils;
 import reetz.letrando.DTO.LyricResponse;
 import reetz.letrando.DTO.MusicDTO;
 import reetz.letrando.service.ExternalService;
 import reetz.letrando.service.SpotifyAuthService;
+
 import java.util.List;
 import java.util.Map;
 
