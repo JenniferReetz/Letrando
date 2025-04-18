@@ -276,8 +276,8 @@ Usuário criado com sucesso
   <summary>
     <strong>🟠 PUT</strong>
   </summary>
-####  Atualiza a playlist
 
+#####  Atualiza a playlist
 ```http
   http://localhost:8080/playlists/1
 ```
@@ -315,8 +315,8 @@ Usuário criado com sucesso
   <summary>
     <strong>🔴 DELETE</strong>
   </summary>
+	
 ####  Deleta uma playlist
-
 ```http
   http://localhost:8080/playlists/1
 ```
