@@ -325,7 +325,7 @@ Usuário criado com sucesso
 <a name="insomnia-collection"></a>
 ## 🔗 Insomnia Collection
 <details>
-<summary> <strong>Download</strong></summary> 
+<summary> <strong>DOWNLOAD</strong></summary> 
 Para testar os endpoints da API, importe o arquivo `.har` no Insomnia:
 
 📁 [Download da Collection](collection/Insomnia_2025-04-18.yaml)
