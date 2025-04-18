@@ -23,16 +23,13 @@ public class PlaylistService {
     private  UsuarioRepository usuarioRepository;
 
 
-    public PlaylistDTO create(PlaylistDTO dto) {
-        Usuario usuario = usuarioRepository.findById(dto.userId()).orElseThrow();
-
+    public PlaylistDTO create(PlaylistDTO dto, Usuario usuario) {
         Playlist playlist = new Playlist();
         playlist.setNome(dto.name());
         playlist.setUsuario(usuario);
         playlist.setMusicIds(dto.musicIds());
 
         Playlist saved = playlistRepository.save(playlist);
-
         return toDTO(saved);
     }
     public List<MusicDTO> getPlaylistMusics(Long playlistId) {

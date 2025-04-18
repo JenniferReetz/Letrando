@@ -25,8 +25,11 @@ public class PlaylistController {
     }
 
     @PostMapping
-    public ResponseEntity<PlaylistDTO> create(@RequestBody PlaylistDTO dto) {
-        return ResponseEntity.ok(playlistService.create(dto));
+    public ResponseEntity<PlaylistDTO> create(@RequestBody PlaylistDTO dto, @AuthenticationPrincipal UserDetails userDetails) {
+        String username = userDetails.getUsername();
+        Usuario usuario = usuarioRepository.findByUsername(username);
+
+        return ResponseEntity.ok(playlistService.create(dto, usuario));
     }
 
     @GetMapping("/user")

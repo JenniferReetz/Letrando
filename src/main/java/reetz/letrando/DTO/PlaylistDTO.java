@@ -1,10 +1,9 @@
 package reetz.letrando.DTO;
 
 import java.util.List;
-
+//entrada por enquanto
 public record PlaylistDTO(
         Long id,
         String name,
-        Long userId,
         List<String> musicIds
 ) {}
