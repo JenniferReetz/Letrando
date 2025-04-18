@@ -328,7 +328,7 @@ Usuário criado com sucesso
 <summary> <strong>HAR</strong></summary> 
 Para testar os endpoints da API, importe o arquivo `.har` no Insomnia:
 
-📁 [Download da Collection](./collection/Insomnia_2025-04-18.har)
+📁 [Download da Collection](collection/Insomnia_2025-04-18.har)
 
 **Como importar no Insomnia:**
 1. Abra o Insomnia
