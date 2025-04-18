@@ -1,0 +1,352 @@
+type: collection.insomnia.rest/5.0
+name: Letrando
+meta:
+  id: wrk_2e1ced8c872443c0bdf4d9e7b3dc4e8d
+  created: 1744994581283
+  modified: 1744994581283
+collection:
+  - name: Letrando
+    meta:
+      id: fld_9552d29c1ac94c48865e71855233bcb2
+      created: 1744994493908
+      modified: 1744998080547
+      sortKey: -1744994493908
+    children:
+      - name: Playlist
+        meta:
+          id: fld_6e94c191e95a4d91a6264da6f7a96f63
+          created: 1744847625825
+          modified: 1744994501716
+          sortKey: -1744994496395
+        children:
+          - url: "{{host}}/playlists/1/musics"
+            name: Buscar músicas de uma playlist
+            meta:
+              id: req_3c9a6c4e6054455686614f31799e3aa9
+              created: 1744847644737
+              modified: 1744998220762
+              isPrivate: false
+              sortKey: -1744931008345
+            method: GET
+            headers:
+              - name: User-Agent
+                value: insomnia/11.0.2
+            authentication:
+              type: bearer
+              token: "{{access_token}}"
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{host}}/playlists/2"
+            name: Deletar playlist por id
+            meta:
+              id: req_8bd592a4f44c490db710dd3d854d9879
+              created: 1744847649663
+              modified: 1744998647558
+              isPrivate: false
+              sortKey: -1744847649663
+            method: DELETE
+            headers:
+              - name: User-Agent
+                value: insomnia/11.0.2
+            authentication:
+              type: bearer
+              token: "{{access_token}}"
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{host}}/playlists"
+            name: Criar playlist
+            meta:
+              id: req_6a118090777246da871c503fa2674acb
+              created: 1744847656658
+              modified: 1744998626720
+              isPrivate: false
+              sortKey: -1744847656658
+            method: POST
+            body:
+              mimeType: application/json
+              text: |-
+                {
+                  "name": "Opus Dei",
+                  "userId": 2,
+                  "musicIds": [
+                    "72FVh1OAKWANKJosPdrBkl"
+                  ]
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/11.0.2
+            authentication:
+              type: bearer
+              token: "{{access_token}}"
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{host}}/playlists/1"
+            name: Atualizar/Adicionar Músicas na playlist
+            meta:
+              id: req_420187e792134f7f92952df96685812a
+              created: 1744930869598
+              modified: 1744998639790
+              isPrivate: false
+              sortKey: -1744847653160.5
+            method: PUT
+            body:
+              mimeType: application/json
+              text: |-
+                {
+                  "name": "Músicas Animadas",
+                  "userId": 1,
+                  "musicIds": [
+                    "0SiywuOBRcynK0uKGWdCnn",
+                		"0qMip0B2D4ePEjBJvAtYre"
+                  ]
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/11.0.2
+            authentication:
+              type: bearer
+              token: "{{access_token}}"
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{host}}/playlists/user"
+            name: Buscar músicas do usuário autenticado
+            meta:
+              id: req_d24f21292ddd46de8ae274d7096a4a92
+              created: 1744931008245
+              modified: 1744998614521
+              isPrivate: false
+              sortKey: -1744931008245
+            method: GET
+            headers:
+              - name: User-Agent
+                value: insomnia/11.0.2
+            authentication:
+              type: bearer
+              token: "{{access_token}}"
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{host}}/spotify/add-music/1"
+            name: Adicionar música(s) numa playlist
+            meta:
+              id: req_a3a734e9d8d344688073dc723ef46d9e
+              created: 1744996912752
+              modified: 1744998199981
+              isPrivate: false
+              sortKey: -1744889263128
+            method: POST
+            body:
+              mimeType: text/plain
+              text: 2plbrEY59IikOBgBGLjaoe
+            headers:
+              - name: Content-Type
+                value: text/plain
+            authentication:
+              type: bearer
+              token: "{{access_token}}"
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+      - name: Auth
+        meta:
+          id: fld_e2e72957240d4977a6801cbb2eb2e18b
+          created: 1744850378386
+          modified: 1744998080548
+          sortKey: -1744994496445
+        children:
+          - url: "{{host}}/auth/login"
+            name: login
+            meta:
+              id: req_0e8ae403bcef452dbd043ff59c38bb7e
+              created: 1744685068960
+              modified: 1744998585034
+              isPrivate: false
+              sortKey: -1744850384157
+            method: POST
+            body:
+              mimeType: application/json
+              text: |-
+                {
+                	"username":"jennifer",
+                	"password":"12345678"
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/11.0.2
+            authentication:
+              type: none
+            scripts:
+              afterResponse: |-
+                const jsonBody = insomnia.response.json();
+                insomnia.environment.set("access_token", jsonBody.token);
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8080/auth/signup
+            name: signup
+            meta:
+              id: req_fb3e856f49314623aa2980370380e536
+              created: 1744685080560
+              modified: 1744939586179
+              isPrivate: false
+              sortKey: -1744850384057
+            method: POST
+            body:
+              mimeType: application/json
+              text: |-
+                {
+                	"username":"usuario",
+                	"password":"senha1234"
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/11.0.2
+            authentication:
+              type: none
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+      - name: Musics
+        meta:
+          id: fld_6782d51de4884e7eb41670fb4cc04b89
+          created: 1744850407173
+          modified: 1744994498398
+          sortKey: -1744994496345
+        children:
+          - url: "{{host}}/spotify/search?q=Die+With+A+Smile"
+            name: Buscar Músicas por nome/álbum/artista
+            meta:
+              id: req_f91b1c12b8a54cfb9609335cab5e4487
+              created: 1744850410732
+              modified: 1744999082651
+              isPrivate: false
+              sortKey: -1744850410732
+            method: GET
+            headers:
+              - name: User-Agent
+                value: insomnia/11.0.2
+                id: pair_ee69a9f37e50427fbf73775de8cbb0a7
+              - id: pair_e696930e2c78486ead12904f5c6c4a5a
+                name: "Authentication: Bearer"
+                value: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzdGVmYW5pZSIsImlhdCI6MTc0NDg1Njc2MCwiZXhwIjoxNzQ0ODYwMzYwfQ.qV1zBM8Yb2YFKQfS7KI75HQamp6YIYRrvXmKo6bXGh0
+                disabled: true
+            authentication:
+              type: bearer
+              token: "{{acess_token}}"
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+      - name: Lyrics
+        meta:
+          id: fld_91b0969fa6a743998586614919e87d20
+          created: 1744933936789
+          modified: 1744994496391
+          sortKey: -1744994496245
+        children:
+          - url: "{{host}}/lyrics?songName=Die+With+A+Smile"
+            name: Buscar letra de uma música
+            meta:
+              id: req_d93f99cb4bd54530a3e1d8badcbc0fe0
+              created: 1744933962865
+              modified: 1744999087663
+              isPrivate: false
+              sortKey: -1744933962865
+            method: GET
+            headers:
+              - name: User-Agent
+                value: insomnia/11.0.2
+            authentication:
+              type: bearer
+              token: "{{acess_token}}"
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_94cec7c5f857e2804d3294ae4e85c911e2de6dca
+    created: 1744994581291
+    modified: 1744998080538
+  cookies:
+    - id: d39fdb24-ee2a-417c-a59f-86c539fa1f27
+      key: JSESSIONID
+      value: EE931E12017BE94A68B408C17EAB84B2
+      domain: localhost
+      path: /
+      secure: false
+      httpOnly: true
+      creation: 2025-04-18T17:24:03.992Z
+      hostOnly: true
+      lastAccessed: 2025-04-18T17:24:03.992Z
+environments:
+  name: Base Environment
+  meta:
+    id: env_94cec7c5f857e2804d3294ae4e85c911e2de6dca
+    created: 1744994581286
+    modified: 1744998190948
+    isPrivate: false
+  data:
+    access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqZW5uaWZlciIsImlhdCI6MTc0NDk5ODA3NywiZXhwIjoxNzQ1MDAxNjc3fQ.UhHiKrz_E_yvdh44EfW_pMg9SImKX4jDa2Uq0UpJcdI
+    host: http://localhost:8080
