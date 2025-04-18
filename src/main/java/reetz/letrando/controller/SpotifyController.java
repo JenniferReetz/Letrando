@@ -25,20 +25,25 @@ public class SpotifyController {
     private PlaylistRepository playlistRepository;
 
     @PostMapping("/add-music/{playlistId}")
-    public ResponseEntity<String> addMusicToPlaylist(@PathVariable Long playlistId, @RequestBody String musicId) {
+    public ResponseEntity<String> addMusicToPlaylist(
+            @PathVariable Long playlistId,
+            @RequestBody List<String> musicIds) {
+
         String accessToken = spotifyAuthService.getAccessToken();
-        MusicDTO musicDTO = externalService.getMusicFromSpotify(musicId, accessToken);
 
         Playlist playlist = playlistRepository.findById(playlistId).orElse(null);
         if (playlist == null) {
             return ResponseEntity.status(404).body("Playlist não encontrada");
         }
 
-        playlist.getMusicIds().add(musicDTO.id());
+        for (String musicId : musicIds) {
+            MusicDTO musicDTO = externalService.getMusicFromSpotify(musicId, accessToken);
+            playlist.getMusicIds().add(musicDTO.id());
+        }
 
         playlistRepository.save(playlist);
 
-        return ResponseEntity.ok("Música adicionada à playlist com sucesso");
+        return ResponseEntity.ok("Músicas adicionadas à playlist com sucesso");
     }
 
     @GetMapping("/music/{musicId}")
