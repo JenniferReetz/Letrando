@@ -1,7 +1,9 @@
 package reetz.letrando.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 import reetz.letrando.DTO.MusicDTO;
 import reetz.letrando.DTO.PlaylistDTO;
 import reetz.letrando.model.Playlist;
@@ -53,10 +55,25 @@ public class PlaylistService {
         return toDTO(playlist);
     }
 
-    public PlaylistDTO update(Long id, PlaylistDTO dto) {
+    public PlaylistDTO updateName(Long id, String name, Usuario usuario) {
         Playlist playlist = playlistRepository.findById(id).orElseThrow();
-        playlist.setNome(dto.name());
-        playlist.setMusicIds(dto.musicIds());
+
+        if (!playlist.getUsuario().getId().equals(usuario.getId())) {
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Você não tem permissão para editar essa playlist.");
+        }
+
+        playlist.setNome(name);
+        return toDTO(playlistRepository.save(playlist));
+    }
+
+    public PlaylistDTO updateMusics(Long id, List<String> musicIds, Usuario usuario) {
+        Playlist playlist = playlistRepository.findById(id).orElseThrow();
+
+        if (!playlist.getUsuario().getId().equals(usuario.getId())) {
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Você não tem permissão para editar essa playlist.");
+        }
+
+        playlist.setMusicIds(musicIds);
         return toDTO(playlistRepository.save(playlist));
     }
 

@@ -45,11 +45,20 @@ public class PlaylistController {
         return ResponseEntity.ok(playlistService.getById(id));
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<PlaylistDTO> update(@PathVariable Long id, @RequestBody PlaylistDTO dto) {
-        return ResponseEntity.ok(playlistService.update(id, dto));
-    }
+    @PutMapping("/{id}/name")
+    public ResponseEntity<PlaylistDTO> updateName(@PathVariable Long id, @RequestBody String name, @AuthenticationPrincipal UserDetails userDetails) {
+        String username = userDetails.getUsername();
+        Usuario usuario = usuarioRepository.findByUsername(username);
 
+        return ResponseEntity.ok(playlistService.updateName(id, name, usuario));
+    }
+    @PutMapping("/{id}/musics")
+    public ResponseEntity<PlaylistDTO> updateMusics(@PathVariable Long id, @RequestBody List<String> musicIds, @AuthenticationPrincipal UserDetails userDetails) {
+        String username = userDetails.getUsername();
+        Usuario usuario = usuarioRepository.findByUsername(username);
+
+        return ResponseEntity.ok(playlistService.updateMusics(id, musicIds, usuario));
+    }
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         playlistService.delete(id);
