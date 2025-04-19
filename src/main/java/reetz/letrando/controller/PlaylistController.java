@@ -7,6 +7,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 import reetz.letrando.DTO.MusicDTO;
 import reetz.letrando.DTO.PlaylistDTO;
+import reetz.letrando.DTO.PlaylistUpdateDTO;
 import reetz.letrando.model.Usuario;
 import reetz.letrando.repository.UsuarioRepository;
 import reetz.letrando.service.PlaylistService;
@@ -45,23 +46,24 @@ public class PlaylistController {
         return ResponseEntity.ok(playlistService.getById(id));
     }
 
-    @PutMapping("/{id}/name")
-    public ResponseEntity<PlaylistDTO> updateName(@PathVariable Long id, @RequestBody String name, @AuthenticationPrincipal UserDetails userDetails) {
+    @PutMapping("/{id}")
+    public ResponseEntity<PlaylistDTO> update(
+            @PathVariable Long id,
+            @RequestBody PlaylistUpdateDTO dto,
+            @AuthenticationPrincipal UserDetails userDetails) {
+
         String username = userDetails.getUsername();
         Usuario usuario = usuarioRepository.findByUsername(username);
 
-        return ResponseEntity.ok(playlistService.updateName(id, name, usuario));
+        return ResponseEntity.ok(playlistService.update(id, dto, usuario));
     }
-    @PutMapping("/{id}/musics")
-    public ResponseEntity<PlaylistDTO> updateMusics(@PathVariable Long id, @RequestBody List<String> musicIds, @AuthenticationPrincipal UserDetails userDetails) {
-        String username = userDetails.getUsername();
-        Usuario usuario = usuarioRepository.findByUsername(username);
 
-        return ResponseEntity.ok(playlistService.updateMusics(id, musicIds, usuario));
-    }
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Long id) {
-        playlistService.delete(id);
+    public ResponseEntity<Void> delete(@PathVariable Long id, @AuthenticationPrincipal UserDetails userDetails) {
+        String username = userDetails.getUsername();
+        Usuario usuario = usuarioRepository.findByUsername(username);
+
+        playlistService.delete(id, usuario);
         return ResponseEntity.noContent().build();
     }
     @GetMapping("/{id}/musics")

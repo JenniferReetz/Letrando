@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 import reetz.letrando.DTO.MusicDTO;
 import reetz.letrando.DTO.PlaylistDTO;
+import reetz.letrando.DTO.PlaylistUpdateDTO;
 import reetz.letrando.model.Playlist;
 import reetz.letrando.model.Usuario;
 import reetz.letrando.repository.PlaylistRepository;
@@ -54,35 +55,36 @@ public class PlaylistService {
         Playlist playlist = playlistRepository.findById(id).orElseThrow();
         return toDTO(playlist);
     }
-
-    public PlaylistDTO updateName(Long id, String name, Usuario usuario) {
+    public PlaylistDTO update(Long id, PlaylistUpdateDTO dto, Usuario usuario) {
         Playlist playlist = playlistRepository.findById(id).orElseThrow();
 
         if (!playlist.getUsuario().getId().equals(usuario.getId())) {
             throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Você não tem permissão para editar essa playlist.");
         }
 
-        playlist.setNome(name);
+        if (dto.name() != null && !dto.name().isBlank()) {
+            playlist.setNome(dto.name());
+        }
+
+        if (dto.musicIds() != null) {
+            playlist.setMusicIds(dto.musicIds());
+        }
+
         return toDTO(playlistRepository.save(playlist));
     }
 
-    public PlaylistDTO updateMusics(Long id, List<String> musicIds, Usuario usuario) {
+    public void delete(Long id, Usuario usuario) {
         Playlist playlist = playlistRepository.findById(id).orElseThrow();
 
         if (!playlist.getUsuario().getId().equals(usuario.getId())) {
-            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Você não tem permissão para editar essa playlist.");
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Você não tem permissão para deletar essa playlist.");
         }
 
-        playlist.setMusicIds(musicIds);
-        return toDTO(playlistRepository.save(playlist));
-    }
-
-    public void delete(Long id) {
-        playlistRepository.deleteById(id);
+        playlistRepository.delete(playlist);
     }
 
     private PlaylistDTO toDTO(Playlist p) {
-        return new PlaylistDTO(p.getId(), p.getNome(), p.getUsuario().getId(), p.getMusicIds());
+        return new PlaylistDTO(p.getId(), p.getNome(), p.getMusicIds());
     }
 
 }
