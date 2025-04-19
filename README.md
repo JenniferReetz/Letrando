@@ -246,13 +246,11 @@ Usuário criado com sucesso
 | Chave   | Tipo       | Descrição                           |
 | :---------- | :--------- | :---------------------------------- |
 | `name` | `string` | **Obrigatório**. Nome da playlist |
-| `userId` | `number` | **Obrigatório**. id do usuário |
 | `musicIds` | `string` | **Obrigatório**. id das músicas |
 ##### Exemplo do login de um cliente:
 ```json
 {
   "name": "Opus Dei",
-  "userId": 2,
   "musicIds": [
     "72FVh1OAKWANKJosPdrBkl"
   ]
@@ -278,22 +276,21 @@ Usuário criado com sucesso
 
 #####  Atualiza a playlist
 ```http
-  http://localhost:8080/playlists/1
+  http://localhost:8080/playlists/{id}
 ```
 
 ##### Atualizar uma playlist:
 | Chave   | Tipo       | Descrição                           |
 | :---------- | :--------- | :---------------------------------- |
 | `name` | `string` | **Obrigatório**. Nome da playlist |
-| `userId` | `number` | **Obrigatório**. id do usuário |
 | `musicIds` | `string` | **Obrigatório**. id das músicas |
 ##### Exemplo de requisição:
 ```json
 {
-  "name": "Opus Dei",
-  "userId": 2,
+  "name": "Opus Dei Updated",
   "musicIds": [
-    "72FVh1OAKWANKJosPdrBkl"
+    "72FVh1OAKWANKJosPdrBkl",
+    "NewMusicId123"
   ]
 }
 ```
@@ -301,10 +298,11 @@ Usuário criado com sucesso
 ```json
 {
 	"id": 3,
-	"name": "Opus Dei",
+	"name": "Opus Dei Updated",
 	"userId": 2,
 	"musicIds": [
-		"72FVh1OAKWANKJosPdrBkl"
+		"72FVh1OAKWANKJosPdrBkl",
+		"NewMusicId123"
 	]
 }
 ```
