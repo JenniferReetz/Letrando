@@ -12,6 +12,7 @@
 - [Funcionalidades](#funcionalidades)
 - [Tecnologias](#tecnologias)
 - [Como executar o projeto](#como-executar)
+- [Variáveis de Ambiente](#variaveis-de-ambiente)
 - [Autenticação](#autenticação)
 - [Endpoints](#endpoints)
 - [Insomnia Collection](#insomnia-collection)
@@ -70,8 +71,57 @@ git clone https://github.com/JenniferReetz/Letrando.git
 cd Letrando
 ./mvnw spring-boot:run
 ```
+
+---
+
+<a name="variaveis-de-ambiente"></a>
+## ⚙️ Variáveis de Ambiente
+
+#### Para executar o projeto corretamente, é necessário configurar as seguintes variáveis de ambiente:
+<details>
+	
+<summary><strong>🗂️ Banco de Dados</strong></summary>
+
+| Variável | Descrição |
+|---------|-----------|
+| `DB_USER` | Usuário do banco de dados PostgreSQL |
+| `DB_PASSWORD` | Senha do banco de dados PostgreSQL |
+</details>
+
+<details><summary><strong>🔐 JWT</strong></summary>
+
+| Variável | Descrição |
+|---------|-----------|
+| `JWT_SECRET` | Chave secreta usada para assinar e verificar os tokens JWT. Pode ser qualquer string segura. |
+</details>
+
+<details>
+<summary><strong>🎵 Integração com Spotify</strong></summary> 
+
+| Variável | Descrição |
+|---------|-----------|
+| `CLIENT_ID` | Client ID da aplicação Spotify (você precisa criar uma aplicação no [Spotify Developer](https://developer.spotify.com/dashboard)) |
+| `CLIENT_SECRETS` | Client Secret da aplicação Spotify |
+
+
+> 📌 **Importante:** Para obter `CLIENT_ID` e `CLIENT_SECRETS`, crie uma app no [Spotify Developer Dashboard](https://developer.spotify.com/dashboard) e configure os redirecionamentos se necessário.
+
+</details>
+
+### 📁 Exemplo de `.env`
+
+Crie um arquivo chamado `.env` (ou configure via variáveis do Spring, se estiver rodando externamente), com o seguinte conteúdo:
+```text
+DB_USER=postgres DB_PASSWORD=sua_senha JWT_SECRET=uma_chave_bem_secreta_123 CLIENT_ID=sua_client_id_do_spotify CLIENT_SECRETS=sua_client_secret_do_spotify
+```
+
+
+
+---
+
 <a name="autenticação"></a>
 ## 🔐 Autenticação JWT
+
 <details>
   <summary><strong>COMO FAZER?</strong></summary>
 Para acessar os endpoints protegidos, você precisa estar autenticado e enviar o token JWT no cabeçalho da requisição como Bearer Token.   
@@ -98,6 +148,7 @@ curl -H "Authorization: Bearer SEU_TOKEN_AQUI" \
 ```
 </details> 
 
+---
 
 <a name="endpoints"></a>
 ## :pushpin: Endpoints
@@ -320,17 +371,26 @@ Usuário criado com sucesso
 
 </details>
 
+---
+
 <a name="insomnia-collection"></a>
 ## 🔗 Insomnia Collection
 <details>
-<summary> <strong>DOWNLOAD</strong></summary> 
-Para testar os endpoints da API, importe o arquivo `.har` no Insomnia:
+<summary><strong>DOWNLOAD</strong></summary>
 
-📁 [Download da Collection](collection/Insomnia_2025-04-18.yaml)
+Para testar os endpoints da API, importe a Collection no formato **Insomnia V5**.
 
-**Como importar no Insomnia:**
+📁 [Download da Collection](collection/Insomnia_2025-04-18.json)
+
+### Como importar no Insomnia:
+
 1. Abra o Insomnia
 2. Vá em `File` > `Import` > `From File`
-3. Selecione o arquivo `Insomnia_2025-04-18.yaml`
-4. Pronto! Agora é só testar os endpoints da API
+3. Selecione o arquivo `Insomnia_2025-04-18.json`
+4. Pronto! Agora você pode testar todos os endpoints da API com as variáveis e autenticação já configuradas
+
+> ⚠️ A Collection utiliza variáveis como `{{host}}` e `{{access_token}}`. Não esqueça de atualizar os valores caso esteja rodando em outro host ou precise autenticar novamente.
+
 </details>
+
+
