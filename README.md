@@ -107,14 +107,15 @@ cd Letrando
 > 📌 **Importante:** Para obter `CLIENT_ID` e `CLIENT_SECRETS`, crie uma app no [Spotify Developer Dashboard](https://developer.spotify.com/dashboard) e configure os redirecionamentos se necessário.
 
 </details>
-
-### 📁 Exemplo de `.env`
+<details>
+ <summary><strong>📁 Exemplo de .env </strong></summary>
 
 Crie um arquivo chamado `.env` (ou configure via variáveis do Spring, se estiver rodando externamente), com o seguinte conteúdo:
 ```text
 DB_USER=postgres DB_PASSWORD=sua_senha JWT_SECRET=uma_chave_bem_secreta_123 CLIENT_ID=sua_client_id_do_spotify CLIENT_SECRETS=sua_client_secret_do_spotify
 ```
 
+</details>
 
 
 ---
